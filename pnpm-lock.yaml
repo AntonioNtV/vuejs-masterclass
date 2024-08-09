@@ -11,6 +11,9 @@ importers:
       '@supabase/supabase-js':
         specifier: 2.43.4
         version: 2.43.4
+      '@tanstack/vue-table':
+        specifier: ^8.20.3
+        version: 8.20.3(vue@3.4.36(typescript@5.4.5))
       '@vueuse/core':
         specifier: ^10.11.1
         version: 10.11.1(vue@3.4.36(typescript@5.4.5))
@@ -486,8 +489,18 @@ packages:
   '@swc/helpers@0.5.12':
     resolution: {integrity: sha512-KMZNXiGibsW9kvZAO1Pam2JPTDBm+KSHMMHWdsyI/1DbIZjT2A6Gy3hblVXUMEDvUAKq+e0vL0X0o54owWji7g==}
 
+  '@tanstack/table-core@8.20.1':
+    resolution: {integrity: sha512-5Ly5TIRHnWH7vSDell9B/OVyV380qqIJVg7H7R7jU4fPEmOD4smqAX7VRflpYI09srWR8aj5OLD2Ccs1pI5mTg==}
+    engines: {node: '>=12'}
+
   '@tanstack/virtual-core@3.8.4':
     resolution: {integrity: sha512-iO5Ujgw3O1yIxWDe9FgUPNkGjyT657b1WNX52u+Wv1DyBFEpdCdGkuVaky0M3hHFqNWjAmHWTn4wgj9rTr7ZQg==}
+
+  '@tanstack/vue-table@8.20.3':
+    resolution: {integrity: sha512-xlkGc71Q2Eam+XsgEn4WLej0l4E8BYoI7rMitqBxORY+bixjmrj/ggA6cdAw4ECSbyN5CeTb+vMuh9nGdEhOdQ==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      vue: '>=3.2'
 
   '@tanstack/vue-virtual@3.8.5':
     resolution: {integrity: sha512-JBHw3xFUslYgrbvNlCYtTWwFo8zjzRs7c2rs6B4JKFXWyP5yHuoeivgQgeZ34t6O6lJTNqc/K4ccmmcmKqpMPA==}
@@ -2112,7 +2125,14 @@ snapshots:
     dependencies:
       tslib: 2.6.3
 
+  '@tanstack/table-core@8.20.1': {}
+
   '@tanstack/virtual-core@3.8.4': {}
+
+  '@tanstack/vue-table@8.20.3(vue@3.4.36(typescript@5.4.5))':
+    dependencies:
+      '@tanstack/table-core': 8.20.1
+      vue: 3.4.36(typescript@5.4.5)
 
   '@tanstack/vue-virtual@3.8.5(vue@3.4.36(typescript@5.4.5))':
     dependencies:

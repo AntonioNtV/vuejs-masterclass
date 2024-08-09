@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { supabase } from '@/lib/supabaseClient'
-import { ref } from 'vue'
+import { h, ref } from 'vue'
 import type { Tables } from '../../../database/types'
-
+import type { ColumnDef } from '@tanstack/vue-table'
+import DataTable from '@/components/ui/data-table/DataTable.vue'
 const tasks = ref<Tables<'tasks'>[] | null>(null)
 ;(async () => {
   const { data, error } = await supabase.from('tasks').select()
@@ -14,17 +15,67 @@ const tasks = ref<Tables<'tasks'>[] | null>(null)
 
   console.log('tasks:', tasks)
 })()
+
+interface Payment {
+  id: string
+  amount: number
+  status: 'pending' | 'processing' | 'success' | 'failed'
+  email: string
+}
+
+const data: Payment[] = [
+  {
+    id: 'm5gr84i9',
+    amount: 316,
+    status: 'success',
+    email: 'ken99@yahoo.com'
+  },
+  {
+    id: '3u1reuv4',
+    amount: 242,
+    status: 'success',
+    email: 'Abe45@gmail.com'
+  },
+  {
+    id: 'derv1ws0',
+    amount: 837,
+    status: 'processing',
+    email: 'Monserrat44@gmail.com'
+  },
+  {
+    id: '5kma53ae',
+    amount: 874,
+    status: 'success',
+    email: 'Silas22@gmail.com'
+  },
+  {
+    id: 'bhqecj4p',
+    amount: 721,
+    status: 'failed',
+    email: 'carmella@hotmail.com'
+  }
+]
+
+const columns: ColumnDef<Payment>[] = [
+  {
+    accessorKey: 'amount',
+    header: () => h('div', { class: 'text-right' }, 'Amount'),
+    cell: ({ row }) => {
+      const amount = Number.parseFloat(row.getValue('amount'))
+      const formatted = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+      }).format(amount)
+
+      return h('div', { class: 'text-right font-medium' }, formatted)
+    }
+  }
+]
 </script>
 
 <template>
   <div>
-    <h1>Tasks Page</h1>
-    <RouterLink to="/">Go to Home</RouterLink>
-    <ul>
-      <li v-for="task in tasks" :key="task.id">
-        {{ task.name }}
-      </li>
-    </ul>
+    <DataTable :columns="columns" :data="data" />
   </div>
 </template>
 
