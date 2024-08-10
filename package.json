@@ -10,17 +10,9 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/",
-    "supabase:init": "supabase init",
-    "supabase:login": "supabase login",
-    "supabase:link": "supabase link --project-ref emivktfxungjieuwvoox",
-    "db:migrate:new": "supabase migration new",
-    "db:reset": "supabase db reset --linked",
-    "db:seed": "node --env-file=.env database/seed.js",
-    "supabase:types": "npx supabase gen types --lang=typescript --project-id emivktfxungjieuwvoox --schema public > database/types.ts"
+    "format": "prettier --write src/"
   },
   "dependencies": {
-    "@supabase/supabase-js": "2.43.4",
     "@tanstack/vue-table": "^8.20.3",
     "@vueuse/core": "^10.11.1",
     "class-variance-authority": "^0.7.0",
@@ -50,7 +42,6 @@
     "install": "^0.13.0",
     "npm-run-all2": "^6.2.0",
     "prettier": "^3.2.5",
-    "supabase": "^1.187.10",
     "tailwindcss": "^3.4.9",
     "typescript": "~5.4.0",
     "unplugin-auto-import": "^0.18.2",
